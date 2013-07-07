@@ -1,11 +1,14 @@
-import core_types
+
 import ctypes
 import numpy as np
 import type_conv
 
-from core_types import StructT, IncompatibleTypes, Int64, ptr_type
+import core_types
+
+from core_types import StructT, IncompatibleTypes
+from ptr_type import ptr_type
+from scalar_types import Int64, ScalarT, IntT
 from tuple_type import TupleT, repeat_tuple
-from core_types import TypeValueT
 
 def buffer_info(buf, ptr_type = ctypes.c_void_p):
   """Given a python buffer, return its address and length"""
@@ -92,7 +95,7 @@ class ArrayT(StructT):
 
   def node_init(self):
     
-    assert isinstance(self.elt_type, core_types.ScalarT), \
+    assert isinstance(self.elt_type, ScalarT), \
       "Can't create array with element type %s, currently only scalar elements supported" % \
       (self.elt_type,)
         
@@ -127,7 +130,7 @@ class ArrayT(StructT):
   def combine(self, other):
     if self == other:
       return self
-    elif isinstance(other, core_types.ScalarT):
+    elif isinstance(other, ScalarT):
       elt_t = self.elt_type
       combined_elt_t = elt_t.combine(other)
       return make_array_type(combined_elt_t, self.rank)
@@ -161,7 +164,7 @@ class ArrayT(StructT):
     # we lose one result dimension for each int in the index set
     result_rank = n_required
     for t in indices:
-      if isinstance(t, core_types.IntT):
+      if isinstance(t, IntT):
         result_rank -= 1
       else:
         assert isinstance(t, (core_types.NoneT, SliceT, ArrayT, TupleT)), \
