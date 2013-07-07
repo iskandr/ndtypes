@@ -2,15 +2,11 @@ import numpy as np
 import types 
 
 import core_types 
-import prims  
 import type_conv
 
 from array_type import make_array_type, ArrayT
 from closure_type import make_closure_type, ClosureT
-
-from frontend import jit, macro 
 from tuple_type import make_tuple_type, TupleT 
-
 from core_types import NoneT, NoneType, TypeValueT, from_dtype
 
 type_conv.register(type(None), NoneT, lambda _: NoneType)
@@ -34,6 +30,8 @@ def typeof_array(x):
   rank = len(x.shape)
   return make_array_type(elt_t, rank)
 
+type_conv.register(np.ndarray, ArrayT, typeof_array)
+
 type_conv.register((np.ndarray, list, xrange), ArrayT, typeof_array)
 
 def typeof_prim(p):
@@ -41,7 +39,8 @@ def typeof_prim(p):
   return make_closure_type(untyped_fn, [])
 
 type_conv.register(prims.class_list, ClosureT, typeof_prim)
-
+import prims  
+from frontend import jit, macro 
 def typeof_fn(f):
   import ast_conversion
   untyped_fn = ast_conversion.translate_function_value(f)
