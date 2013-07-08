@@ -1,6 +1,5 @@
 import ctypes
 
-
 from treelike import Node
 
 class TypeFailure(Exception):

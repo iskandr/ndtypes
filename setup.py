@@ -19,7 +19,7 @@ setup(
     author="Alex Rubinsteyn",
     author_email="alexr@cs.nyu.edu",
     license="BSD",
-    version="0.1.3",
+    version="0.1",
     url="http://github.com/iskandr/ndtypes",
     packages=[ 'ndtypes'],
     package_dir={ '' : '.' },
