@@ -8,6 +8,7 @@ import sys
 setup(
     name="ndtypes",
     description="Types for array-oriented domain-specific languages embedded in Python.", 
+
     long_description="",
     classifiers=['Development Status :: 3 - Alpha',
                  'Topic :: Software Development :: Libraries',
@@ -22,5 +23,5 @@ setup(
     url="http://github.com/iskandr/ndtypes",
     packages=[ 'ndtypes'],
     package_dir={ '' : '.' },
-    requires=[ 'treelike'] 
+    requires=['treelike'] 
     )

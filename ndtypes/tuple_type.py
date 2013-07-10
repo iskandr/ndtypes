@@ -3,7 +3,7 @@ import ctypes
 import type_conv
 
 from core_types import IncompatibleTypes, StructT
-from syntax import Expr, Const
+
 
 class TupleT(StructT):
   rank = 0
@@ -65,9 +65,9 @@ class TupleT(StructT):
     return iter(self.elt_types)
 
   def index_type(self, idx):
-    assert isinstance(idx, Expr), \
-        "Tuple index not an expression: %s" % idx
-    assert isinstance(idx, Const), "Unsupported expression: %s" % idx
+    #assert isinstance(idx, Expr), \
+    #    "Tuple index not an expression: %s" % idx
+    #assert isinstance(idx, Const), "Unsupported expression: %s" % idx
     idx = int(idx.value)
     assert 0 <= idx < len(self.elt_types), \
         "Can't get element %d from tuple of length %d" % \
