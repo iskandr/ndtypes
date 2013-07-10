@@ -20,7 +20,7 @@ from scalar_types import UInt8, UInt16, UInt32, UInt64
 from scalar_types import Bool, Float32, Float64
 from scalar_types import Complex64, Complex128
 from scalar_types import ConstIntT
-from scalar_types import is_scalar_subtype, is_scalar, all_scalars, 
+from scalar_types import is_scalar_subtype, is_scalar, all_scalars
 from scalar_types import from_dtype, from_char_code 
 from slice_type import SliceT, make_slice_type
 
