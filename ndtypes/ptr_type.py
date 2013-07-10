@@ -1,6 +1,7 @@
 import ctypes 
 
-from core_types import ConcreteT, IntT 
+from core_types import ConcreteT
+from scalar_types import IntT 
 
 ###########################################
 #

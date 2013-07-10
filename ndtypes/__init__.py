@@ -1,7 +1,7 @@
 from array_type import ArrayT, make_array_type
 from array_type import elt_type, elt_types, rank
 from array_type import get_rank, lower_rank
-from array_type import lower_rank, increase_rank, increase_ranks
+from array_type import lower_rank, lower_ranks, increase_rank
 
 
 from core_types import TypeFailure, IncompatibleTypes, FieldNotFound

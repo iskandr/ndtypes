@@ -158,7 +158,7 @@ class ConstIntT(IntT):
 def is_scalar_subtype(t1, t2):
   return isinstance(t1, ScalarT) and \
          isinstance(t2, ScalarT) and \
-         ((t1 == t2) or (t1.nbytes() < t2.nbytes()) or \
+         ((t1 == t2) or (t1.nbytes < t2.nbytes) or \
           (isinstance(t1, IntT) and isinstance(t2, FloatT)))
 
 def register_numeric_type(klass, dtype):
